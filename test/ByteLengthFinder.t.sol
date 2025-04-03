@@ -10,15 +10,23 @@ contract ByteLengthFinderTest is Test {
         c = new ByteLengthFinder();
     }
 
-    // function test_zero() public {
-    //     assertEq(c.getUint256ByteLengthWithBinarySearch(0), 0);
-    // }
+    function test_zero() public {
+        assertEq(c.getUint256ByteLengthWithBinarySearch(0), 0);
+    }
 
-    // function test_one() public {
-    //     assertEq(c.getUint256ByteLengthWithBinarySearch(1), 1);
-    // }
+    function test_one() public {
+        assertEq(c.getUint256ByteLengthWithBinarySearch(1), 1);
+    }
 
     function test_1000() public {
-        assertEq(c.getUint256ByteLengthWithBinarySearch(1000), 3);
+        assertEq(c.getUint256ByteLengthWithBinarySearch(1000), 2);
+    }
+
+    function test_9000() public {
+        assertEq(c.getUint256ByteLengthWithBinarySearch(9000), 2);
+    }
+
+    function test_maxUint256() public {
+        assertEq(c.getUint256ByteLengthWithBinarySearch(type(uint256).max), 32);
     }
 }
