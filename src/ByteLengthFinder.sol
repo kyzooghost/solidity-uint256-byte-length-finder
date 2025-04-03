@@ -1,7 +1,4 @@
 pragma solidity 0.8.28;
-
-import { console } from "forge-std/console.sol";
-
 contract ByteLengthFinder {
     function getUint256ByteLengthWithBinarySearch(uint256 x) external returns (uint256) {
         assembly {
@@ -9,7 +6,6 @@ contract ByteLengthFinder {
                 mstore(0x00, 0)
                 return(0x00, 0x20)
             }
-            log1(0x00, 0, x)
             // Starting index of byte section we will check, 0=MSB, 31=LSB
             // We start from MSB, and so we greedily check the most significant byte section that we have not ruled out
             let sectionStart := 0
