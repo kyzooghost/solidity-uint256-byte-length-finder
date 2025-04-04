@@ -14,43 +14,43 @@ contract ByteLengthFinderTest is Test {
     //     assertEq(c.getUint256ByteLengthWithBinarySearch(0), 0);
     // }
 
-    function test_1() public {
+    function test_binary_1() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(1), 1);
     }
 
-    function test_1Ref() public {
+    function test_linear_1() public {
         assertEq(c.getUint256ByteLengthWithLinearSearch(1), 1);
     }
 
-    function test_1000() public {
+    function test_binary_1000() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(1000), 2);
     }
 
-    function test_1000Ref() public {
+    function test_linear_1000() public {
         assertEq(c.getUint256ByteLengthWithLinearSearch(1000), 2);
     }
 
-    function test_9000() public {
+    function test_binary_9000() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(9000), 2);
     }
 
-    function test_9000Ref() public {
+    function test_linear_9000() public {
         assertEq(c.getUint256ByteLengthWithLinearSearch(9000), 2);
     }
 
-    function test_maxUint256() public {
+    function test_binary_maxUint256() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(type(uint256).max), 32);
     }
 
-    function test_maxUint256Ref() public {
+    function test_linear_maxUint256() public {
         assertEq(c.getUint256ByteLengthWithLinearSearch(type(uint256).max), 32);
     }
 
-    function test_9489014812984912() public {
+    function test_binary_9489014812984912() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(9489014812984912), 7);
     }
 
-    function test_9489014812984912Ref() public {
+    function test_linear_9489014812984912() public {
         assertEq(c.getUint256ByteLengthWithLinearSearch(9489014812984912), 7);
     }
 }
