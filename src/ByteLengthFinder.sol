@@ -6,23 +6,24 @@ contract ByteLengthFinder {
                 mstore(0x00, 0)
                 return(0x00, 0x20)
             }
-            // Starting index of byte section we will check, 0=MSB, 31=LSB
-            // We start from MSB, and so we greedily check the most significant byte section that we have not ruled out
+            // Starting index of bit section we will check, 0=MSB, 255=LSB
+            // We start from MSB, and so we greedily check the most significant bit section that we have not ruled out
             let sectionStart := 0
-            // Length in bits of section we will check
+            // Bit length of section we will check
             let sectionLength := 128
             for {
+            // Stop when bit section < 1 byte
             } gt(sectionLength, 7) {
                 // Halve sectionLength with each round
                 sectionLength := shr(1, sectionLength)
             } {
                 let section := shr(sub(256, add(sectionLength, sectionStart)), x)
-                // This byte section is 0 -> in next round, byte section starts where the current round's section ended
+                // Current section is 0 -> in next round, section starts where the current section ended
                 if iszero(section) {
                     sectionStart := add(sectionStart, sectionLength)
                     continue
                 }
-                // This byte section is not-zero -> in next round, byte section starts where current round's section started
+                // Current section is not-zero -> in next round, section start does not change
             }
             mstore(0x00, div(sub(256, sectionStart), 8))
             return(0x00, 0x20)
