@@ -86,5 +86,7 @@ contract ByteLengthFinderTest is Test {
         assertEq(c.getUint256ByteLengthWithLinearSearch(type(uint256).max), 32);
     }
 
-
+    function testFuzz_equivalenceForLinearAndBinaryImplementations(uint256 x) public {
+        assertEq(c.getUint256ByteLengthWithLinearSearch(x), c.getUint256ByteLengthWithBinarySearch(x));
+    }
 }
