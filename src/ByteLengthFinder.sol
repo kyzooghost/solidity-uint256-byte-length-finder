@@ -27,7 +27,7 @@ contract ByteLengthFinder {
                 }
                 // Current section is not-zero -> in next round, section start does not change
             }
-            // Divide by 8 to converts from bits to bytes
+            // Divide by 8 to convert from bits to bytes
             mstore(0x00, div(sub(256, sectionStart), 8))
             return(0x00, 0x20)
         }
