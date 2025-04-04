@@ -17,6 +17,8 @@ contract ByteLengthFinder {
                 // Halve sectionLength with each round
                 sectionLength := shr(1, sectionLength)
             } {
+                // No need to left shift because we greedily check the most significant bits. So any bytes to the left of section will be 0
+                // Right shift 'x' until desired section occupies least significant bits
                 let section := shr(sub(256, add(sectionLength, sectionStart)), x)
                 // Current section is 0 -> in next round, section starts where the current section ended
                 if iszero(section) {
