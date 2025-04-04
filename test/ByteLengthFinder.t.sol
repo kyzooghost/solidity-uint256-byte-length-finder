@@ -10,9 +10,13 @@ contract ByteLengthFinderTest is Test {
         c = new ByteLengthFinder();
     }
 
-    // function test_zero() public {
-    //     assertEq(c.getUint256ByteLengthWithBinarySearch(0), 0);
-    // }
+    function test_binary_0() public {
+        assertEq(c.getUint256ByteLengthWithBinarySearch(0), 0);
+    }
+    
+    function test_linear_0() public {
+        assertEq(c.getUint256ByteLengthWithLinearSearch(0), 0);
+    }
 
     function test_binary_1() public {
         assertEq(c.getUint256ByteLengthWithBinarySearch(1), 1);
